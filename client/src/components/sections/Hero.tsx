@@ -61,7 +61,7 @@ export function Hero() {
           >
             <button 
               onClick={scrollToContact}
-              className="group relative px-8 py-4 bg-zinc-100 text-zinc-900 font-display text-sm uppercase tracking-widest font-medium rounded hover:bg-white transition-all overflow-hidden flex items-center justify-center gap-3"
+              className="group relative px-8 py-4 bg-zinc-100 text-zinc-900 font-display text-sm uppercase tracking-widest font-medium rounded hover:bg-white transition-all overflow-hidden flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
             >
               <span>{t('hero.cta.primary')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -69,7 +69,7 @@ export function Hero() {
             
             <button 
               onClick={() => document.getElementById("architecture")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 glass border-zinc-700 text-zinc-300 font-display text-sm uppercase tracking-widest rounded hover:bg-white/5 transition-all"
+              className="px-8 py-4 glass text-zinc-300 font-display text-sm uppercase tracking-widest rounded hover:bg-white/10 transition-all border-white/20"
             >
               {t('hero.cta.secondary')}
             </button>

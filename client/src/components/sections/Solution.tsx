@@ -56,10 +56,11 @@ export function Solution() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 }}
-              className="p-8 rounded-lg border border-white/[0.08] bg-zinc-900/20 backdrop-blur-md hover:bg-zinc-800/40 transition-colors group"
+              className="glass-card p-8 rounded-lg group"
             >
-              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/[0.02] group-hover:bg-white/[0.05] transition-colors">
-                <card.icon className="w-5 h-5 text-zinc-300 stroke-[1.5]" />
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/[0.02] group-hover:bg-white/[0.05] transition-colors relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50" />
+                <card.icon className="w-5 h-5 text-zinc-300 stroke-[1.5] relative z-10" />
               </div>
               <h3 className="font-display text-lg text-zinc-100 font-medium mb-3">
                 {t(card.titleKey)}
