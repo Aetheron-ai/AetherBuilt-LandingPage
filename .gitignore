@@ -7,3 +7,17 @@ vite.config.ts.*
 .env
 .env.local
 .env.*.local
+coverage
+.nyc_output
+.cache
+.parcel-cache
+.vscode
+.idea
+*.swp
+*.swo
+*~
+logs
+*.log
+.tmp
+.temp
+>>>>>>> 2850914df77193fece4488620849ecc793fabde4
