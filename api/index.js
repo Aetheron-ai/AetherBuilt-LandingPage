@@ -1,7 +1,8 @@
 import "dotenv/config";
 import express from "express";
-import { registerRoutes } from "../server/routes.js";
-import { serveStatic } from "../server/static.js";
+import { storage } from "../server/storage.js";
+import { api } from "../shared/routes.js";
+import { z } from "zod";
 
 const app = express();
 
@@ -56,12 +57,21 @@ app.use((err, _req, res, next) => {
   return res.status(status).json({ message });
 });
 
-// Register routes
-await registerRoutes(null, app);
-
-// Serve static files in production
-if (process.env.NODE_ENV === "production") {
-  serveStatic(app);
-}
+// Register API routes
+app.post(api.contact.create.path, async (req, res) => {
+  try {
+    const input = api.contact.create.input.parse(req.body);
+    const submission = await storage.createContactSubmission(input);
+    res.status(201).json(submission);
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return res.status(400).json({
+        message: err.errors[0].message,
+        field: err.errors[0].path.join('.'),
+      });
+    }
+    throw err;
+  }
+});
 
 export default app;
