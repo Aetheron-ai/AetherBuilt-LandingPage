@@ -91,13 +91,17 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(
-    {
-      port,
-      host: "localhost",
-    },
-    () => {
-      log(`serving on port ${port}`);
-    },
-  );
+
+  // Only start server if not on Vercel
+  if (!process.env.VERCEL) {
+    httpServer.listen(
+      {
+        port,
+        host: "localhost",
+      },
+      () => {
+        log(`serving on port ${port}`);
+      },
+    );
+  }
 })();
